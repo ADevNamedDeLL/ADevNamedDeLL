@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @ADevNamedDeLL
 - 👀 I’m interested in Making Games and scripts that make my life easier.
-- 🌱 I’m currently learning C#
+- 🌱 I’m currently learning C# and Lua
 - 📫 You can reach me at adevnameddell@gmail.com
 - 😄 Pronouns: He/Him
 

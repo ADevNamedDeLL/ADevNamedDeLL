@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lamp + Acrylic Nav</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Lamp -->
+  <div class="lamp-wrap">
+    <div class="lamp-line"></div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="nav-area">
+    <nav class="nav-shell">
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#projects">Projects</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== Hero (pic + text + socials) ===== -->
+  <section id="home" class="hero">
+    <div class="hero-col pic">
+      <div class="avatar">
+        <!-- Replace src with your picture -->
+        <img src="assets/me.jpg" alt="Profile picture" />
+      </div>
+    </div>
+
+    <div class="hero-col intro">
+      <h1>Hey, I’m DeLL</h1>
+      <p>
+        Programmer & builder of fun projects. I like high-performance code,
+        clean UX, and neon-glow interfaces. Currently hacking on Node.js apps,
+        real-time systems, and security-minded tooling.
+      </p>
+
+      <!-- Acrylic Social Bar -->
+      <div class="social-bar">
+        <a class="social" href="#" aria-label="Instagram">
+          <img src="assets/instagram.png" alt="Instagram icon">
+        </a>
+        <a class="social" href="#" aria-label="X / Twitter">
+          <img src="assets/twitter.png" alt="Twitter icon">
+        </a>
+        <a class="social" href="#" aria-label="GitHub">
+          <img src="assets/github.png" alt="GitHub icon">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Skills ===== -->
+  <section id="skills" class="skills">
+    <h2>Skills</h2>
+
+    <div class="skill">
+      <div class="skill-head">
+        <span>HTML</span><span class="skill-pct">100%</span>
+      </div>
+      <div class="bar">
+        <span class="fill neon-orange skill-html"></span>
+      </div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-head">
+        <span>CSS3</span><span class="skill-pct">90%</span>
+      </div>
+      <div class="bar">
+        <span class="fill neon-blue skill-css"></span>
+      </div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-head">
+        <span>Javascript</span><span class="skill-pct">80%</span>
+      </div>
+      <div class="bar">
+        <span class="fill neon-yellow skill-js"></span>
+      </div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-head">
+        <span>Node.js</span><span class="skill-pct">70%</span>
+      </div>
+      <div class="bar">
+        <span class="fill neon-green skill-node"></span>
+      </div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-head">
+        <span>Python</span><span class="skill-pct">75%</span>
+      </div>
+      <div class="bar">
+        <span class="fill neon-cyan skill-py"></span>
+      </div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-head">
+        <span>C#</span><span class="skill-pct">85%</span>
+      </div>
+      <div class="bar">
+        <span class="fill neon-darkgreen skill-csharp"></span>
+      </div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-head">
+        <span>Lua</span><span class="skill-pct">55%</span>
+      </div>
+      <div class="bar">
+        <span class="fill neon-pink skill-lua"></span>
+      </div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-head">
+        <span>Linux Systems</span><span class="skill-pct">70%</span>
+      </div>
+      <div class="bar">
+        <span class="fill neon-white skill-linux"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Education ===== -->
+  <section id="education" class="education">
+    <h2>Education</h2>
+
+    <div class="edu-timeline">
+
+      <div class="edu-item">
+        <div class="edu-marker"></div>
+        <div class="edu-content">
+          <h3>High School Diploma</h3>
+          <span class="edu-meta">Graduated 2025</span>
+          <p>Focused on Mathmatics, Physics<, Chemistry, And Social Sciences.</p>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-marker"></div>
+        <div class="edu-content">
+          <h3>B.S.c</h3>
+          <span class="edu-meta">Currently</span>
+          <p>Focused on systems programming, software engineering, and cybersecurity. Building real-world projects and improving full-stack skills.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== GitHub Projects (custom cards) ===== -->
+  <section id="projects" class="projects">
+    <h2>GitHub Projects</h2>
+
+    <div class="cards">
+      <article class="card">
+        <div class="card-top">
+          <h3>Glass – The Ultimate Portfolio Website</h3>
+          <span class="badge">Site</span>
+        </div>
+        <p>Glass is a stunning, glassmorphic-themed portfolio website built with HTML, CSS, JavaScript, and Node.js.</p>
+        <div class="tags">
+          <span>HTML</span><span>CSS</span><span>JS</span><span>NODE . JS</span>
+        </div>
+        <div class="actions">
+          <a href="https://github.com/ADevNamedDeLL/Glass-upw/tree/main" target="_blank" class="btn">Repo</a>
+          <a href="https://adevnameddell.github.io/Glass-upw/" target="_blank" class="btn ghost">Live</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <h3>PCSpyAgent</h3>
+          <span class="badge">Tool</span>
+        </div>
+        <p>A lightweight AutoHotkey script that monitors your PC and sends updates via a MacroDroid webhook.</p>
+        <div class="tags">
+          <span>AutoHotkeyNode</span><span>Webhooks</span>
+        </div>
+        <div class="actions">
+          <a href="https://github.com/ADevNamedDeLL/PCSpyAgent" target="_blank" class="btn">Repo</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <h3>Piestructure</h3>
+          <span class="badge">Tool</span>
+        </div>
+        <p>Generate a visual directory tree of any folder with optional exclusions. View it in your terminal or save it as a text file.</p>
+        <div class="tags">
+          <span>Vanilla</span><span>Modules</span><span>UX</span>
+        </div>
+        <div class="actions">
+          <a href="https://github.com/ADevNamedDeLL/Piestructure" target="_blank" class="btn">Repo</a>
+        </div>
+      </article>
+    </div>
+    <div class="more-projects">
+      <a href="https://github.com/aDevNamedDeLL/" target="_blank" class="btn show-more">Show More →</a>
+  </div>
+  </section>
+</body>
+</html>

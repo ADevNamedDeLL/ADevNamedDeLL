@@ -1,0 +1,487 @@
+:root{
+  --bg:#10161d;
+  --fg:#e7f4ff;
+  --muted:#b5c7d4;
+
+  /* neon cyan */
+  --neon:#00eaff;
+  --neon-strong:rgba(0,234,255,.9);
+  --neon-med:rgba(0,234,255,.55);
+  --neon-soft:rgba(0,234,255,.22);
+
+  /* extra neon hues for skills */
+  --neon-purple:#9b5cff;
+  --neon-pink:#ff2ea6;
+  --neon-green:#5dffa3;
+  --neon-blue:#00b7ff;
+  --neon-red:#ff1744;
+  --neon-yellow:#ffe83b;
+  --neon-white:#e8faff;
+  --neon-orange:#ff8c00;
+  --neon-darkgreen:#00c268;
+
+
+  /* acrylic */
+  --acrylic-bg:rgba(255,255,255,.06);
+  --acrylic-border:rgba(255,255,255,.18);
+  --acrylic-shadow:0 8px 30px rgba(0,0,0,.35);
+
+  /* sizing */
+  --max-w: 750px;
+  --radius:18px;
+  --top-gap:-3px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%; overflow-x: hidden;}
+body{
+  margin:0;
+  background: radial-gradient(1200px 600px at 50% -10%, #0e1621, var(--bg) 60%);
+  color:var(--fg);
+  font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  line-height:1.5;
+}
+
+/* ========== Lamp line ========== */
+.lamp-wrap{
+  width:100%;
+  height:60px;
+  display:grid;
+  place-items:center;
+  padding-top:0px;
+  margin:0 0 var(--top-gap) 0;
+}
+.lamp-line{
+  position:relative;
+  width:min(100vw,var(--max-w));
+  height:3px;
+  border-radius:999px;
+  background:var(--neon);
+  box-shadow:
+    0 0 8px var(--neon-strong),
+    0 0 18px var(--neon-med),
+    0 0 40px var(--neon-soft);
+  animation:neon-breathe 3.5s ease-in-out infinite;
+}
+.lamp-line::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
+  width:300%;
+  height:1900%;
+  background:
+    radial-gradient(circle,
+      var(--neon-strong) 24%,
+      var(--neon-med) 36%,
+      var(--neon-soft) 100%,
+      transparent 100%);
+  filter:blur(140px);
+  pointer-events:none;
+  opacity:0.65;
+}
+@keyframes neon-breathe{
+  0%,100% { opacity:.95; filter:brightness(1); }
+  50%     { opacity:1;   filter:brightness(1.15); }
+}
+
+/* ========== Acrylic navbar ========== */
+.nav-area{
+  display:grid;
+  place-items:center;
+  padding:0 16px;
+}
+.nav-shell{
+  width:min(46vw,var(--max-w));
+  height:64px;
+  background:var(--acrylic-bg);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border:1px solid var(--acrylic-border);
+  border-radius:var(--radius);
+  box-shadow:var(--acrylic-shadow);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.nav-links{
+  display:flex;
+  gap:clamp(12px,3vw,28px);
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+/* base link style */
+.nav-links a {
+  position: relative;
+  font-size:.98rem;
+  color:var(--muted);
+  text-decoration:none;
+  padding:8px 10px;
+  transition:transform .15s ease, color .15s ease;
+}
+
+/* underline hidden until hover */
+.nav-links a::after {
+  content:"";
+  position:absolute;
+  bottom: 2px;
+  left:0;
+  width:0%;
+  height:2px;
+  background:var(--neon);
+  box-shadow:0 0 10px var(--neon);
+  transition:width .25s ease;
+  opacity:0; /* <- prevents ghost underline before hover */
+}
+
+.nav-links a:hover::after {
+  width:100%;
+  opacity:1;
+}
+
+/* neon hover glow */
+.nav-links a:hover{
+  color:var(--neon);
+  background:transparent;
+  transform:translateY(-1px);
+  text-shadow:
+    0 0 6px var(--neon),
+    0 0 12px var(--neon),
+    0 0 18px var(--neon),
+    0 0 30px var(--neon-soft);
+  animation: neonPulse 0.85s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+  0% {
+    text-shadow:
+      0 0 6px var(--neon),
+      0 0 12px var(--neon),
+      0 0 18px var(--neon),
+      0 0 30px var(--neon-soft);
+    filter: brightness(1);
+  }
+  100% {
+    text-shadow:
+      0 0 10px var(--neon),
+      0 0 18px var(--neon),
+      0 0 26px var(--neon),
+      0 0 40px var(--neon);
+    filter: brightness(1.25);
+  }
+}
+
+
+
+
+/* ========== Layout helpers ========== */
+section{width:min(92vw,1100px); margin:50px auto;}
+h1,h2,h3{margin:0 0 10px}
+p{margin:0 0 16px; color:var(--fg)}
+
+/* ========== Hero: pic + intro + socials ========== */
+.hero{
+  display:grid;
+  grid-template-columns: 280px 1fr;
+  gap:28px;
+  align-items:center;
+}
+.hero .intro h1{font-size:clamp(28px,4vw,40px)}
+.hero .intro p{color:var(--fg); opacity:.95}
+
+/* Pic: white circular border */
+.avatar{
+  width:260px;
+  aspect-ratio:1/1;
+  border-radius:50%;
+  border:4px solid #fff;          /* white circular border */
+  overflow:hidden;
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+}
+.avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter:saturate(105%);
+}
+
+/* Acrylic Social Bar (small width/height ratio like navbar) */
+/* Acrylic Social Bar */
+.social-bar{
+  margin-top:18px;
+  width:min(180px, 100%);
+  height:54px;
+  background:var(--acrylic-bg);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border:1px solid var(--acrylic-border);
+  border-radius:16px;
+  box-shadow:var(--acrylic-shadow);
+  display:flex;
+  align-items:center;
+  padding:0 10px;
+  gap:10px;
+  --icon-size:22px;               /* control icon size here */
+}
+
+.social{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  transition:transform .18s ease, background-color .18s ease, filter .18s ease;
+}
+
+/* image icons */
+.social img{
+  width:22px;
+  height:22px;
+  display:block;
+  object-fit:contain;
+  filter:brightness(.85) saturate(.9);
+  transition:transform .18s ease, filter .18s ease;
+}
+
+/* hover: scale ++ and brighten */
+.social:hover{
+  transform:scale(1.18);
+  background:rgba(255,255,255,.08);
+}
+.social:hover img{
+  filter:brightness(1.3) saturate(1.3);
+}
+/* Optional: make dark PNGs visible on dark bg
+   (disable if your assets already look good) */
+.social.is-dark img{
+  filter:invert(1) brightness(1.1) saturate(0);
+}
+.social.is-dark:hover img{
+  filter:invert(1) brightness(1.3);
+}
+
+
+/* ========== Skills with neon bars + percentage ========== */
+.skills h2{font-size:clamp(22px,3vw,28px); margin-bottom:14px}
+.skill{margin:14px 0 18px}
+.skill-head{
+  display:flex; align-items:center; justify-content:space-between;
+  color:#fff;
+  margin-bottom:6px;
+}
+.skill .bar{
+  width:100%;
+  height:14px;
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--acrylic-border);
+  border-radius:999px;
+  overflow:hidden;
+  position:relative;
+}
+.skill .fill{
+  position:absolute; left:0; top:0; height:100%;
+  width:var(--pct,0%); border-radius:999px;
+  background: currentColor;
+  box-shadow:
+    0 0 6px currentColor,
+    0 0 16px currentColor,
+    inset 0 0 8px rgba(255,255,255,.2);
+}
+/* different neon colors */
+.neon-cyan   { color: var(--neon); }
+.neon-purple { color: var(--neon-purple); }
+.neon-pink   { color: var(--neon-pink); }
+.neon-green  { color: var(--neon-green); }
+.neon-blue   { color: var(--neon-blue); }
+.neon-red    { color: var(--neon-red); }
+.neon-yellow { color: var(--neon-yellow); }
+.neon-blue     { color: var(--neon-blue); }
+.neon-orange   { color: var(--neon-orange); }
+.neon-darkgreen{ color: var(--neon-darkgreen); }
+.neon-white  { color: var(--neon-white); }
+
+.skill-pct{color:#fff; opacity:.9}
+
+/* === Skill bar fill percentages === */
+.skill-html  { --pct: 100%; }
+.skill-css  { --pct: 90%; }
+.skill-js  { --pct: 80%; }
+.skill-html  { --pct: 100%; }
+.skill-node  { --pct: 70%; }
+.skill-py  { --pct: 75%; }
+.skill-csharp  { --pct: 85%; }
+.skill-lua  { --pct: 55%; }
+.skill-linux  { --pct: 70%; }
+
+/* ========== Project cards (custom GitHub-like) ========== */
+.projects h2{font-size:clamp(22px,3vw,28px); margin-bottom:14px}
+.cards{
+  display:grid;
+  grid-template-columns: repeat( auto-fit, minmax(260px, 1fr) );
+  gap:18px;
+}
+.card{
+  background:var(--acrylic-bg);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border:1px solid var(--acrylic-border);
+  border-radius:18px;
+  padding:16px;
+  box-shadow:var(--acrylic-shadow);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(255,255,255,.28);
+  box-shadow:0 14px 40px rgba(0,0,0,.45);
+}
+.card-top{
+  display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;
+}
+.card h3{font-size:1.05rem}
+.badge{
+  font-size:.75rem;
+  padding:4px 8px;
+  border-radius:999px;
+  color:#061014;
+  background:linear-gradient(90deg, var(--neon), #68f0ff);
+  box-shadow:0 0 10px var(--neon-soft);
+}
+.card p{color:var(--fg); opacity:.95; margin-bottom:10px}
+.tags{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px}
+.tags span{
+  font-size:.75rem; padding:4px 8px; border-radius:999px;
+  background:rgba(255,255,255,.08); border:1px solid var(--acrylic-border);
+}
+.actions{display:flex; gap:10px}
+.btn{
+  display:inline-block; padding:8px 12px; border-radius:12px;
+  text-decoration:none; color:#061014; font-weight:600;
+  background:linear-gradient(90deg, var(--neon), #68f0ff);
+  border:0; box-shadow:0 0 14px var(--neon-soft);
+}
+.btn.ghost{
+  background:transparent; color:var(--fg);
+  border:1px solid var(--acrylic-border);
+}
+/* Neon Button Hover (Repo + any solid button) */
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 10px var(--neon),
+    0 0 20px var(--neon-soft),
+    inset 0 0 6px rgba(255,255,255,.25);
+  filter: brightness(1.18);
+}
+
+/* Ghost Button Hover (Live demo link) */
+.btn.ghost:hover {
+  background: rgba(255,255,255,.06);
+  color: var(--neon);
+  border-color: var(--neon);
+  box-shadow:
+    0 0 10px var(--neon),
+    0 0 18px var(--neon-soft),
+    inset 0 0 4px rgba(0,234,255,.35);
+  transform: translateY(-2px);
+}
+
+
+.more-projects {
+  margin-top: 22px;
+  text-align: center;
+}
+
+.show-more {
+  display: inline-block;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #061014;
+  background: linear-gradient(90deg, var(--neon), #68f0ff);
+  box-shadow: 0 0 14px var(--neon-soft);
+  transition: transform .18s ease;
+}
+
+.show-more:hover {
+  transform: translateY(-2px);
+}
+
+/* ===== Education Section ===== */
+.education {
+  margin-top: 60px;
+}
+
+.education h2 {
+  font-size: clamp(22px,3vw,28px);
+  margin-bottom: 20px;
+}
+
+.edu-timeline {
+  border-left: 2px solid var(--neon-soft);
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.edu-item {
+  position: relative;
+}
+
+.edu-marker {
+  position: absolute;
+  left: -12px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--neon);
+  box-shadow:
+    0 0 6px var(--neon),
+    0 0 12px var(--neon-soft);
+}
+
+.edu-content h3 {
+  font-size: 1.1rem;
+  margin: 0 0 6px;
+  color: var(--fg);
+  margin-left: 10px;
+}
+
+.edu-meta {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 6px;
+  margin-left: 10px;
+}
+
+.edu-content p {
+  color: var(--fg);
+  opacity: 0.9;
+  margin: 0;
+  margin-left: 10px;
+}
+
+/* ========== Responsive tweaks ========== */
+@media (max-width: 860px){
+  .hero{
+    grid-template-columns: 1fr;
+    text-align:center;
+  }
+  .avatar{margin-inline:auto}
+  .social-bar{margin-inline:auto}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .lamp-line{animation:none}
+}
+
